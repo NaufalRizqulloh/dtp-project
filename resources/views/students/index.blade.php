@@ -1,6 +1,7 @@
 @extends('templates.default')
 @section('content')
 <div class="col-12">
+
                 <div class="card">
                   <div class="table-responsive">
                     <table class="table table-vcenter card-table">
@@ -20,12 +21,16 @@
                                 <td class="text-muted">{{$student->phone_number}}</td>
                                 <td>{{$student->address}}</td>
                                 <td>{{$student->class}}</td>
-                                <td>    
-                                    <a href="{{ route('students.edit', $student->id) }}">Edit</a>
+                                <td>
+                                    <form action="{{ route('students.edit', $student) }}" method="POST">
+                                        @csrf
+
+                                    <button class="btn">Edit</button>
+                                    </form>
                                     <form action="{{ route('students.destroy', $student) }}" method="POST">
                                         @csrf
                                         @method('delete')
-                                    <button class="text-indigo-600 hover:text-indigo-900"onclick="return confirm('Are you sure delete this data?')">Delete</button>
+                                    <button class="btn"onclick="return confirm('Are you sure delete this data?')">Delete</button>
                                         </form>
                                 </td>
                             </tr>

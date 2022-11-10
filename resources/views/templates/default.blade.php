@@ -57,6 +57,15 @@
         </div>
         <div class="page-body">
           <div class="container-xl">
+            @if (session('success'))
+              <div class="alert alert-success">Data Berhasil Ditambahkann</div>
+            @elseif(session('update'))
+              <div class="alert alert-info">Data Berhasil Diedit</div>
+            @elseif(session('delete'))
+              <div class="alert alert-danger">Data Berhasil Dihapus</div>
+            @else
+            
+            @endif
             @yield('content')
           </div>
         </div>
